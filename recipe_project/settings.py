@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-6@_7@6xrgu6%w0%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://borecipesapp-d8aa2a381872.herokuapp.com/'] #added for heroku
+ALLOWED_HOSTS = ['*'] #added for heroku
 
 # Application definition
 
@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -120,19 +121,13 @@ LOGIN_URL = '/login/'
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS=[
-    BASE_DIR / 'static'
-]
-
+STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT= BASE_DIR / 'media'
+STATIC_ROOT = BASE_DIR / 'recipes' / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
