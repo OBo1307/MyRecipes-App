@@ -1,0 +1,50 @@
+{% load static %}
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>RecipesApp Home</title>
+  <link rel="shortcut icon" href="{% static 'recipes/images/favicon-32x32.png' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/success-logout.css' %}">
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <div class="logo">
+    <img src="{% static 'recipes/images/favicon-32x32.png' %}" alt="Logo">
+    <span class="logo-text">MyRecipes</span>
+  </div>
+  <div class="container logout-container">
+    <h3><span class="logout-message">You have been successfully logged out. Thank you for using our recipe app!</h3></span>
+    <a href="{% url 'login' %}" class="my-login-button">Login again</a>
+    <div class="slogan">
+      <h3>Find Happiness In Cooking</h3>
+    </div>
+  </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <p class="page-footer__item">Find me on:</p>
+      <div class="social-media page-footer__item">
+        <!-- Github logo -->
+        <a href="https://github.com/OBo1307/" target="_blank"><img src="{% static 'recipes/images/github.png' %}"
+            alt="Github"></a>
+        <!-- Personal Portofolio logo -->
+        <a href="https://www.bogdano.tech/" target="_blank"><img src="{% static 'recipes/images/techb.png' %}"
+            alt="Twitter"></a>
+        <!-- LinkedIN logo -->
+        <a href="https://www.linkedin.com/in/bogdan-ionut-ochrim-6887ab267/" target="_blank"><img
+            src="{% static 'recipes/images/linkedin.png' %}" alt="LinkedIn"></a>
+      </div>
+    </footer>
+    
+</body>
+
+</html>

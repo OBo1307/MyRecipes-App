@@ -1,0 +1,30 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>RecipeApp: Your Recipes</title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="{% static 'recipes/images/favicon-32x32.png' %}" />
+  {% bootstrap_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/detail.css' %}">
+</head>
+
+<body>
+  <div class="background-overlay"></div>
+  <h3>Details: {{ object.name }}</h3>
+  <div class="details_body">
+    <a class="btn btn-secondary back-button" href="{% url 'recipes:list' %}">Back</a>
+    <div class="food_image_container">
+      <img class="food_image" src="{{ object.pic.url }}" alt="{{ object.name }}" />
+    </div>
+    <b>Name:</b> <span class="object">{{ object.name }}</span> <br>
+    <b>Description:</b> <span class="object">{{ object.description }}</span> <br>
+    <b>Cooking Time:</b> <span class="object">{{ object.cooking_time }}</span> <br>
+    <b>Difficulty:</b> <span class="object">{{ object.calculate_difficulty }}</span> <br>
+    <b>Ingredients:</b> <span class="object">{{ object.ingredients }}</span> <br>
+  </div>
+</body>
+
+</html>

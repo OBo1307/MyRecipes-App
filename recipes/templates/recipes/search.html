@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>RecipeApp: Search</title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="{% static 'recipes/images/favicon-32x32.png' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'recipes/css/search.css' %}">
+</head>
+
+<body>
+  <div class="background-overlay"></div>
+  <div class="logo">
+    <img src="{% static 'recipes/images/favicon-32x32.png' %}" alt="Logo">
+    <span class="logo-text">MyRecipes</span>
+  </div>
+  <a href="{% url 'recipes:list' %}" class="back-btn">Back</a>
+  <a href="{% url 'logout' %}" class="logout">Logout</a>
+
+  <div class="search_results">
+    <h1>Search for recipes</h1>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Search</button>
+    </form>
+
+    <br>
+    {% if qs %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Cooking Time (minutes)</th>
+      </tr>
+      {% for recipe in qs %}
+      <tr>
+        <td><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></td>
+        <td>{{ recipe.ingredients }}</td>
+        <td>{{ recipe.cooking_time }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br>
+    <img src="data:image/png;base64, {{ chart|safe }}">
+    {% else %}
+    <h3>No data, try again.</h3>
+    {% endif %}
+  </div>
+</body>
+
+</html>

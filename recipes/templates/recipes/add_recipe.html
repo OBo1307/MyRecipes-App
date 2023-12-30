@@ -1,0 +1,32 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>RecipesApp Home</title>
+  <link rel="shortcut icon" href="{% static 'recipes/images/favicon-32x32.png' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  {% bootstrap_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/add_recipe.css' %}">
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    {% block content %}
+      <h2 class="my-4">Add Recipe</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form add_form %}
+        <button type="submit" class="btn btn-primary mt-3">Add Recipe</button>
+      </form>
+    {% endblock %}
+  </div>
+
+  {% bootstrap_javascript %}
+</body>
+
+</html>
