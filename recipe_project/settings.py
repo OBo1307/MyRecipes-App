@@ -15,6 +15,12 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+
+]
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +32,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-6@_7@6xrgu6%w0%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*'] #added for heroku
+ALLOWED_HOSTS = ['https://borecipesapp-d8aa2a381872.herokuapp.com','borecipesapp-d8aa2a381872.herokuapp.com'] #added for heroku
 
 # Application definition
 
