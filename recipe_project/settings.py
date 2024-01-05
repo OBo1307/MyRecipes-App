@@ -153,21 +153,30 @@ DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Configure WhiteNoise for serving media files
-AWS_ACCESS_KEY_ID = os.getenv('AKIATHFPQXR4CMZEOOGF')
-AWS_SECRET_ACCESS_KEY = os.getenv('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')
-AWS_STORAGE_BUCKET_NAME = os.getenv('myrecipesbuk')
-AWS_S3_REGION_NAME = os.getenv('eu-west-2')
+# Bucketeer settings for media files
+BUCKETEER_AWS_ACCESS_KEY_ID = os.getenv('AKIAX7CRDYXP7CZDLEHM')
+BUCKETEER_AWS_SECRET_ACCESS_KEY = os.getenv('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')
+BUCKETEER_BUCKET_NAME_MEDIA = os.getenv('bucketeer-9240826f-2785-4ee7-8c30-d56e212ee58b')
+BUCKETEER_BUCKET_REGION_MEDIA = os.getenv('us-east-1')
+BUCKETEER_MEDIA_URL = os.getenv('BUCKETEER_MEDIA_URL')
 
-if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME and AWS_S3_REGION_NAME:
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
-    AWS_LOCATION = 'media'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    # Configure storage class for static files
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# Bucketeer settings for static files
+BUCKETEER_BUCKET_NAME_STATIC = os.getenv('BUCKETEER_BUCKET_NAME_STATIC')
+BUCKETEER_BUCKET_REGION_STATIC = os.getenv('BUCKETEER_BUCKET_REGION_STATIC')
+BUCKETEER_STATIC_URL = os.getenv('BUCKETEER_STATIC_URL')
+
+# Storage classes for media and static files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS S3 settings for Bucketeer media files
+AWS_ACCESS_KEY_ID = BUCKETEER_AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = BUCKETEER_AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = BUCKETEER_BUCKET_NAME_MEDIA
+AWS_S3_REGION_NAME = BUCKETEER_BUCKET_REGION_MEDIA
+AWS_S3_CUSTOM_DOMAIN = BUCKETEER_MEDIA_URL
+
+# AWS S3 settings for Bucketeer static files
+STATIC_URL = BUCKETEER_STATIC_URL
+STATICFILES_DIRS = []
+STATIC_ROOT = None
