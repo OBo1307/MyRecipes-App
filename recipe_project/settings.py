@@ -15,6 +15,7 @@ import os
 from whitenoise.middleware import WhiteNoiseMiddleware
 import boto3    #added for heroku
 from django.conf import settings #added for heroku
+from storages.backends.s3boto3 import S3Boto3Storage #added for heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages', #added for heroku
     #recipe app-related apps
     'recipes',
     'users',
@@ -164,4 +166,8 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME and A
     }
     AWS_LOCATION = 'media'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    # Configure storage class for static files
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
