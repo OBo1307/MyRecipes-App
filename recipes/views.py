@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import login_required
 class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe
     template_name = 'recipes/main.html'
+    paginate_by = 7  # Number of recipes per page
+    ordering = ['-created_at']  # Order recipes by a specific field
+
 
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
