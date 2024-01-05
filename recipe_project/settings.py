@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage', #added for heroku
     'django.contrib.staticfiles',
+    'cloudinary', #added for heroku
     #recipe app-related apps
     'recipes',
     'users',
@@ -149,4 +151,11 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hpkdecig2',
+    'API_KEY': '266136694671432',
+    'API_SECRET': 'fKDi0imMRxpmhUNjKqXgS4JpZTc',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
