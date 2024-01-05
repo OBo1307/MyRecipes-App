@@ -152,3 +152,34 @@ h1 {
 .add:hover {
   font-size: 28px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.step-links {
+  display: flex;
+  align-items: center;
+}
+
+.step-links a {
+  color: #ffff00;
+  font-family: "Sigmar", sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: font-size 0.3s;
+}
+
+.step-links a:hover {
+  font-size: 24px;
+}
+
+.current-page {
+  color: #ff0000;
+  font-family: "Sigmar", sans-serif;
+  font-size: 24px;
+  margin: 0 5px;
+}
