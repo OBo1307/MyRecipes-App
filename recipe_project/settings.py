@@ -152,10 +152,10 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Configure WhiteNoise for serving media files
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_ACCESS_KEY_ID = os.getenv('AKIATHFPQXR4CMZEOOGF')
+AWS_SECRET_ACCESS_KEY = os.getenv('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')
+AWS_STORAGE_BUCKET_NAME = os.getenv('myrecipesbuk')
+AWS_S3_REGION_NAME = os.getenv('eu-west-2')
 
 if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME and AWS_S3_REGION_NAME:
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
