@@ -15,7 +15,6 @@ import os
 from whitenoise.middleware import WhiteNoiseMiddleware
 import boto3    #added for heroku
 from django.conf import settings #added for heroku
-from storages.backends.s3boto3 import S3Boto3Storage #added for heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages', #added for heroku
     #recipe app-related apps
     'recipes',
     'users',
@@ -152,31 +150,3 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Bucketeer settings for media files
-BUCKETEER_AWS_ACCESS_KEY_ID = os.getenv('AKIAX7CRDYXP7CZDLEHM')
-BUCKETEER_AWS_SECRET_ACCESS_KEY = os.getenv('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')
-BUCKETEER_BUCKET_NAME_MEDIA = os.getenv('bucketeer-9240826f-2785-4ee7-8c30-d56e212ee58b')
-BUCKETEER_BUCKET_REGION_MEDIA = os.getenv('us-east-1')
-BUCKETEER_MEDIA_URL = os.getenv('BUCKETEER_MEDIA_URL')
-
-# Bucketeer settings for static files
-BUCKETEER_BUCKET_NAME_STATIC = os.getenv('BUCKETEER_BUCKET_NAME_STATIC')
-BUCKETEER_BUCKET_REGION_STATIC = os.getenv('BUCKETEER_BUCKET_REGION_STATIC')
-BUCKETEER_STATIC_URL = os.getenv('BUCKETEER_STATIC_URL')
-
-# Storage classes for media and static files
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# AWS S3 settings for Bucketeer media files
-AWS_ACCESS_KEY_ID = BUCKETEER_AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = BUCKETEER_AWS_SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME = BUCKETEER_BUCKET_NAME_MEDIA
-AWS_S3_REGION_NAME = BUCKETEER_BUCKET_REGION_MEDIA
-AWS_S3_CUSTOM_DOMAIN = BUCKETEER_MEDIA_URL
-
-# AWS S3 settings for Bucketeer static files
-STATIC_URL = BUCKETEER_STATIC_URL
-STATICFILES_DIRS = []
-STATIC_ROOT = None
