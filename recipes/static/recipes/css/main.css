@@ -5,7 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: url("../images/main-background.jpg") no-repeat fixed;
+  background: url("https://res.cloudinary.com/hpkdecig2/image/upload/v1704475343/static/recipes/images/main-background.201dde7db3a3.jpg") no-repeat fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

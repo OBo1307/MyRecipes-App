@@ -1,5 +1,5 @@
 body {
-  background: url("../images/welcome_background.jpg") no-repeat fixed;
+  background: url("https://res.cloudinary.com/hpkdecig2/image/upload/v1704475351/static/recipes/images/welcome_background.ac57f496a661.jpg") no-repeat fixed;
   background-size: cover;
   display: flex;
   flex-direction: column;
